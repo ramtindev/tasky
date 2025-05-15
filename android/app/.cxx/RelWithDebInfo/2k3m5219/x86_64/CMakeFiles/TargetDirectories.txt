@@ -1,0 +1,2 @@
+E:/orgtaski/android/app/.cxx/RelWithDebInfo/2k3m5219/x86_64/CMakeFiles/edit_cache.dir
+E:/orgtaski/android/app/.cxx/RelWithDebInfo/2k3m5219/x86_64/CMakeFiles/rebuild_cache.dir
