@@ -23,7 +23,7 @@ class Page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(child: GestureDetector(onTap: () =>
-      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SecPage()))
+      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SecondPage()))
        ,
         child: Container(
           width: 120,
