@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:orgtaski/page.dart';
+import 'package:orgtaski/SecendPage.dart';
 
 
 void main (){

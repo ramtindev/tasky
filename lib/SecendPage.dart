@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:orgtaski/methods.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class SecondPage extends StatefulWidget {
@@ -9,17 +10,17 @@ class _SecondPageState extends State<SecondPage> {
  final ScrollController _scrollController =
       ScrollController();
   bool showTitle = false;
-  double CartWidth = 0;
-  double CartHeight = 0;
+  double _cartWidth = 0;
+  double _cartHeight = 0;
   @override
   @override
-  Widget customCard(Color color, String title, String hours, double percent) {
+  Widget BuildCustomCard(Color color, String title, String hours, double percent) {
 
   return AnimatedContainer(
     duration: Duration(milliseconds: 300),
     curve: Curves.bounceInOut,
-    width: CartWidth / 2.3,
-    height: CartHeight,
+    width: _cartWidth / 2.3,
+    height: _cartHeight,
     decoration: BoxDecoration(
       color: color,
       borderRadius: BorderRadius.circular(40),
@@ -28,7 +29,7 @@ class _SecondPageState extends State<SecondPage> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Padding(
-          padding: const EdgeInsets.only(right: 30.0, top: 10),
+          padding: const EdgeInsetsDirectional.only(end: 32.0, top: 12),
           child: CircularPercentIndicator(
             radius: 47,
             center: Text(
@@ -49,7 +50,7 @@ class _SecondPageState extends State<SecondPage> {
         ),
         SizedBox(height: 70),
         Padding(
-          padding: const EdgeInsets.only(left: 15.0),
+          padding: const EdgeInsetsDirectional.only(start: 16.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -66,7 +67,7 @@ class _SecondPageState extends State<SecondPage> {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    "$hours Hours Progress        ",
+                    "$hours Hours Progress         ",
                     style: TextStyle(color: Colors.white, fontSize: 12),
                   ),
                   SizedBox(height: 13)
@@ -93,10 +94,10 @@ class _SecondPageState extends State<SecondPage> {
       }
     });
     Future.delayed(Duration(milliseconds: 300), () {
-      // TODO:  این کد کلا مشکل داره نباید اینکارو بکنی اول متد build اینو مقدار بده
+      
       setState(() {
-        CartWidth = MediaQuery.sizeOf(context).width; 
-        CartHeight = 290;
+        _cartWidth = MediaQuery.sizeOf(context).width; 
+        _cartHeight = 290;
       });
     });
   }
@@ -138,7 +139,7 @@ class _SecondPageState extends State<SecondPage> {
             child: Column(
               children: [
                 Container(
-                  width: CartWidth, 
+                  width: _cartWidth, 
                   height: 250,
                   decoration: BoxDecoration(
                     color: const Color.fromARGB(248, 254, 196, 87),
@@ -150,11 +151,11 @@ class _SecondPageState extends State<SecondPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(20),
+                            padding: const EdgeInsets.all(24),
                             child: Icon(Icons.menu, size: 40),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(20),
+                            padding: const EdgeInsets.all(24),
                             child: Icon(
                               Icons.search,
                               size: 40,
@@ -232,18 +233,7 @@ class _SecondPageState extends State<SecondPage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 19),
-                      child: Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 75, 142, 154),
-                          borderRadius: BorderRadius.circular(300),
-                        ),
-                        child: Icon(
-                          Icons.calendar_today,
-                          color: Colors.white,
-                        ),
-                      ),
+                      child: BuildCircleIcons(Color.fromARGB(255, 75, 142, 154), Icons.calendar_today)
                     )
                   ],
                 ),
@@ -252,18 +242,7 @@ class _SecondPageState extends State<SecondPage> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(left: 23, right: 5),
-                      child: Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 230, 83, 83),
-                          borderRadius: BorderRadius.circular(300),
-                        ),
-                        child: Icon(
-                          Icons.alarm,
-                          color: Colors.white,
-                        ),
-                      ),
+                      child:BuildCircleIcons(Color.fromARGB(255, 230, 83, 83), Icons.alarm)
                     ),
                     Column(
                       children: [
@@ -291,19 +270,8 @@ class _SecondPageState extends State<SecondPage> {
                 Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 23, right: 5),
-                      child: Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 115, 226, 64),
-                          borderRadius: BorderRadius.circular(300),
-                        ),
-                        child: Icon(
-                          Icons.downloading_outlined,
-                          color: Colors.white,
-                        ),
-                      ),
+                      padding: const EdgeInsets.only(left: 24, right: 4),
+                      child: BuildCircleIcons(Color.fromARGB(255, 115, 226, 64), Icons.downloading)
                     ),
                     Column(
                       children: [
@@ -331,20 +299,8 @@ class _SecondPageState extends State<SecondPage> {
                 Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 23, right: 5),
-                      child: Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 77, 205, 241),
-                          borderRadius: BorderRadius.circular(300),
-                        ),
-                        child: Icon(
-                          Icons.check_circle_outline,
-                          color: Colors.white,
-                          size: 20,
-                        ),
-                      ),
+                      padding: const EdgeInsets.only(left: 24, right: 4),
+                      child:BuildCircleIcons(Color.fromARGB(255, 77, 205, 241), Icons.check_circle_outline)
                     ),
                     Column(
                       children: [
@@ -391,23 +347,22 @@ class _SecondPageState extends State<SecondPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    customCard(Color.fromARGB(255, 52, 112, 102), "Medical app        ", "9", 0.9),
-                   customCard(Color.fromARGB(255, 172, 48, 52), "Making History \n Notes", "12", 0.5)
+                    BuildCustomCard(Color.fromARGB(255, 52, 112, 102), "Medical app        ", "9", 0.9),
+                   BuildCustomCard(Color.fromARGB(255, 172, 48, 52), "Making History \n Notes", "12", 0.5)
                   ],
                 ),
                 SizedBox(height: 35),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                   customCard(Color.fromARGB(255, 42, 212, 33), "Practice Coding", "0!", 0.1),
-                 customCard(Color.fromARGB(255, 15, 215, 182), "Practice Phisics", "12", 0.0)
+                   BuildCustomCard(Color.fromARGB(255, 42, 212, 33), "Practice Coding", "0!", 0.1),
+                 BuildCustomCard(Color.fromARGB(255, 15, 215, 182), "Practice Phisics", "12", 0.0)
                   ],
                 ),
                 SizedBox(height: 10,)
               ], 
             ),
           ),  
-          // اینجا از تابع برای تست استفاده کردم اما نمایش نمیده سرچ هم کردم جواب مفیدی نبود
         ],
       ),
     );
